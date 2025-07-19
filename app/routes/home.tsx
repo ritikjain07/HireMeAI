@@ -73,7 +73,7 @@ export default function Home() {
               {/* Background glow for resume section */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-transparent to-purple-50/50 rounded-3xl blur-xl"></div>
               
-              {resumes.map((resume) => (
+              {resumes.slice(0, 3).map((resume) => (
                 <div key={resume.id} className="relative z-10">
                   <ResumeCard key={resume.id} resume={resume} />
                 </div>
