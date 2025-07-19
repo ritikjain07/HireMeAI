@@ -39,6 +39,11 @@ export default function Home() {
     loadResumes()
   }, []);
 
+  const handleLogout = () => {
+    auth.signOut();
+    navigate('/auth');
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden">
       {/* Advanced Background with Multiple Layers */}
