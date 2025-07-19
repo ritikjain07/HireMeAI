@@ -81,47 +81,70 @@ const Upload = () => {
     }
 
     return (
-        <main className="bg-[url('/images/bg-main.svg')] bg-cover">
-            <Navbar />
+        <main className="relative min-h-screen overflow-hidden">
+            {/* Advanced Background with Multiple Layers */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-cyan-50"></div>
+            
+            {/* Animated Gradient Orbs */}
+            <div className="absolute top-0 left-0 w-full h-full">
+                <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+                <div className="absolute top-40 right-20 w-72 h-72 bg-gradient-to-r from-yellow-400 to-red-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+                <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-r from-green-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+            </div>
+            
+            {/* Geometric Pattern Overlay */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0 bg-grid-pattern"></div>
+            </div>
+            
+            {/* Floating Particles */}
+            <div className="absolute inset-0">
+                <div className="floating-particles"></div>
+            </div>
+            
+            {/* Content */}
+            <div className="relative z-10">
+                <Navbar />
 
-            <section className="main-section">
-                <div className="page-heading py-16">
-                    <h1>Smart feedback for your dream job</h1>
-                    {isProcessing ? (
-                        <>
-                            <h2>{statusText}</h2>
-                            <img src="/images/resume-scan.gif" className="w-full" />
-                        </>
-                    ) : (
-                        <h2>Drop your resume for an ATS score and improvement tips</h2>
-                    )}
-                    {!isProcessing && (
-                        <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8" suppressHydrationWarning>
-                            <div className="form-div">
-                                <label htmlFor="company-name">Company Name</label>
-                                <input type="text" name="company-name" placeholder="Company Name" id="company-name" suppressHydrationWarning />
-                            </div>
-                            <div className="form-div">
-                                <label htmlFor="job-title">Job Title</label>
-                                <input type="text" name="job-title" placeholder="Job Title" id="job-title" suppressHydrationWarning />
-                            </div>
-                            <div className="form-div">
-                                <label htmlFor="job-description">Job Description</label>
-                                <textarea rows={5} name="job-description" placeholder="Job Description" id="job-description" suppressHydrationWarning />
-                            </div>
+                <section className="main-section">
+                    <div className="page-heading py-16">
+                        <h1>Smart feedback for your dream job</h1>
+                        {isProcessing ? (
+                            <>
+                                <h2>{statusText}</h2>
+                                <img src="/images/resume-scan.gif" className="w-full" />
+                            </>
+                        ) : (
+                            <h2>Drop your resume for an ATS score and improvement tips</h2>
+                        )}
+                        {!isProcessing && (
+                            <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8" suppressHydrationWarning>
+                                <div className="form-div">
+                                    <label htmlFor="company-name">Company Name</label>
+                                    <input type="text" name="company-name" placeholder="Company Name" id="company-name" suppressHydrationWarning />
+                                </div>
+                                <div className="form-div">
+                                    <label htmlFor="job-title">Job Title</label>
+                                    <input type="text" name="job-title" placeholder="Job Title" id="job-title" suppressHydrationWarning />
+                                </div>
+                                <div className="form-div">
+                                    <label htmlFor="job-description">Job Description</label>
+                                    <textarea rows={5} name="job-description" placeholder="Job Description" id="job-description" suppressHydrationWarning />
+                                </div>
 
-                            <div className="form-div">
-                                <label htmlFor="uploader">Upload Resume</label>
-                                <FileUploader onFileSelect={handleFileSelect} />
-                            </div>
+                                <div className="form-div">
+                                    <label htmlFor="uploader">Upload Resume</label>
+                                    <FileUploader onFileSelect={handleFileSelect} />
+                                </div>
 
-                            <button className="primary-button" type="submit" suppressHydrationWarning>
-                                Analyze Resume
-                            </button>
-                        </form>
-                    )}
-                </div>
-            </section>
+                                <button className="primary-button" type="submit" suppressHydrationWarning>
+                                    Analyze Resume
+                                </button>
+                            </form>
+                        )}
+                    </div>
+                </section>
+            </div>
         </main>
     )
 }
